@@ -39,11 +39,10 @@ const init = async () => {
       });
     if (hash === 'skip')
       return;
-    else if (hash) {
+    else if (hash) 
       await amqpService.publishTxOk(data, hash);
-    } else {
+    else 
       await amqpService.publishTx(data.blockchain, data.order, data.address);
-    }
   });
 
   await amqpService.start();

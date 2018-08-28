@@ -10,10 +10,12 @@ const createTxFabric = require('../tx/createTxFabric'),
 module.exports = async (blockchain, body, response, amqpService) => {
   try {
     const creator = createTxFabric(blockchain);
-    const tx = await creator.createTx(body['tx'], body['address']);
+    console.log(body);
+    const tx = await creator.createTx(body['tx']);
     await amqpService.publishTx(blockchain, tx.order, tx.address);
     response.send({order: tx.order, ok: true});
   } catch (e) {
+    console.log(e);
     log.error('throw error:' + e.toString());
     response.status(400);
     response.send('Failure in send tx');

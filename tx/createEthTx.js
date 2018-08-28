@@ -12,7 +12,7 @@ module.exports = async (txRaw, address) => {
   const item = new models.txModel();
   item.blockchain = constants.eth;
   item.order = tx.nonce;
-  item.address = ethers.utils.getAddress(address);
+  item.address = ethers.utils.getAddress(tx.from);
   item.raw = txRaw;
   await item.save();
   return item;

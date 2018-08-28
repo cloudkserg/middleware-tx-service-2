@@ -46,10 +46,10 @@ address - from address  for bitcoin transaction
 Example for eth request:
 ```
 POST http://localhost:8081/eth
-body: {tx: 010000000199363a7e27973843aaae9ea7056417302ec3b9ecabed3ae3e90cdcd1a52326b5000000006a4730440220, address: 0x293433453435345}
+body: {tx: 0x010000000199363a7e27973843aaae9ea7056417302ec3b9ecabed3ae3e90cdcd1a52326b5000000006a4730440220, address: 0x293433453435345}
 
 where 
-tx - hex of signed eth transaction
+tx - hex of signed eth transaction (with 0x) from '0x' + tx.serialize().toString('hex')
 address - from address  for eth transaction
 ```
 

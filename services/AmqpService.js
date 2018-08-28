@@ -91,10 +91,10 @@ class AmqpService extends EventEmitter
       new Buffer(JSON.stringify({ok: false, msg})));
   }
 
-  async publishTxOK (data, hash) {
+  async publishTxOk (data, txModel) {
     const routing = `${this.serviceName}.${data.blockchain}.${data.address}.${data.order}`;
     await this.channel.publish(this.exchange, routing, 
-      new Buffer(JSON.stringify({ok: true, hash})));
+      new Buffer(JSON.stringify({ok: true, hash: txModel.hash})));
   }
 
 
